@@ -3,7 +3,7 @@ clean_tmp:
 	rm -r data
 	mkdir tmp
 
-donwload_covid19_data: clean_tmp
+download_covid19_data: clean_tmp
 	if [ ! -f tmp/data.zip ] ; then \
      	wget --output-document=tmp/data.zip https://www.dropbox.com/s/v6h22vx5aw3xalg/datos_abiertos_covid19.zip?dl=0; \
 	fi;

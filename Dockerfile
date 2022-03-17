@@ -17,7 +17,7 @@ RUN pip install \
     numpy \
     pandas
 
-RUN make donwload_covid19_data
+RUN make download_covid19_data
 RUN make unzip_data
 RUN make cut_data
 RUN make run_analysis
