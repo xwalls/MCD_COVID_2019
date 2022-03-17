@@ -17,7 +17,8 @@ def filter_by_age(dataframe):
     return dataframe
 
 
-def save_image(df):
+def save_image(dataframe):
+    df = dataframe.groupby(by="group").count()
     fig, ax = plt.subplots()
     ax.bar(x=df.index, height=df["EDAD"])
     ax.set_title(
@@ -28,4 +29,4 @@ def save_image(df):
 
 df = read_csv()
 df1 = filter_by_age(df)
-save_image(df)
+save_image(df1)
