@@ -11,4 +11,4 @@ unzip_data:
 	unzip ./tmp/data.zip -d ./tmp
 	
 cut_data:
-	csvcut -c SEXO,EDAD 220101COVID19MEXICO.csv > DataProblema.csv
+	csvcut -c SEXO,EDAD ./tmp/220316COVID19MEXICO.csv > ./data/filtered.csv
