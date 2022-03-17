@@ -9,5 +9,6 @@ RUN apt install --yes \
 
 RUN pip install \
     csvkit \
+    matplotlib \
     numpy \
     pandas
