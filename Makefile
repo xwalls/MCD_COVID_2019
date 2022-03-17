@@ -1,7 +1,8 @@
 clean_tmp:
-	rm -r tmp
-	rm -r data
+	rm --force --recursive tmp
+	rm --force --recursive  data
 	mkdir tmp
+	mkdir data
 
 download_covid19_data: clean_tmp
 	if [ ! -f tmp/data.zip ] ; then \
@@ -12,7 +13,6 @@ unzip_data:
 	unzip tmp/data.zip -d tmp
 	
 cut_data:
-	mkdir data
 	csvcut -c SEXO,EDAD tmp/220316COVID19MEXICO.csv > data/filtered.csv
 
 run_analysis:
