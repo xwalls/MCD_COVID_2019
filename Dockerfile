@@ -1,6 +1,13 @@
-FROM alpine
+FROM python:3.8-slim
 
-RUN apk update && \
-    apk upgrade && \
-    apk add --update alpine-sdk && \
-    apk add --update p7zip
+RUN apt-get --yes update && apt-get --yes upgrade
+
+RUN apt install --yes \
+    build-essential \
+    unzip \
+    wget
+
+RUN pip install \
+    csvkit \
+    numpy \
+    pandas
