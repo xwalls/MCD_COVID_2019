@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+# Curso Herramientas de Productividad para Ciencia de Datos
+## Actividad - Descargando y analizando los datos de COVID
 
-You can use the [editor on GitHub](https://github.com/xwalls/MCD_COVID_2019/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### 📋 Introducción 
+Esta es una breve explicación, tenemos una problemática y un conjunto de datos obtenido de la [dirección general de epidemiología](https://www.gob.mx/salud/documentos/datos-abiertos-152127). Debemos utilizar las herramientas (scripting, command line, docker, etc) las cuales fueron vistas en el curso.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### 🔧 Herramientas Y Dependencias
 
-### Markdown
+Docker, Make, wget, Python, zip, pip, pandas, matplotlib, csvcut, csvkit.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### ✏️ El Problema
+Debemos graficar el numero de personas confirmadas con COVID-19 en México \n el dia 16 de Marzo del 2022, por edad
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### 🕹 Pasos
+1. Clonar el repositorio.
 ```
+git clone https://github.com/xwalls/MCD_COVID_2019
+```
+2. Construir contenedor.
+```
+docker build -t MCD_COVID_2019 .
+```
+3. Ejecutar el contenedor de docker construido anteriormente.
+```
+docker run -it --name covid2019 MCD_COVID_2019 bash
+```
+4. El contenedor hara automaticamente lo siguente:
+  ```
+    RUN make download_covid19_data
+    RUN make unzip_data
+    RUN make cut_data
+    RUN make run_analysis
+  ```
+5. Dentro del contenedor podremos encontrar como resultado el siguiente archivo: `result.png`.
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/xwalls/MCD_COVID_2019/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+6. La grafica deberia verse asi: 
