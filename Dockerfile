@@ -1,5 +1,9 @@
 FROM python:3.8-slim
 
+WORKDIR /workdir
+
+COPY . .
+
 RUN apt-get update && apt-get --yes upgrade
 
 RUN apt install --yes \
@@ -12,3 +16,8 @@ RUN pip install \
     matplotlib \
     numpy \
     pandas
+
+RUN make donwload_covid19_data
+RUN make unzip_data
+RUN make cut_data
+RUN make run_analysis
