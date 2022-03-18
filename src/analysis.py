@@ -13,7 +13,6 @@ def filter_by_age(dataframe):
         include_lowest=True,
         labels=["<15", "15-30", "30-45", "45-60", "60-75", "75-90", ">90"],
     )
-    dataframe.groupby(by="group").count()
     return dataframe
 
 
